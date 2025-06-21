@@ -9,4 +9,4 @@ This one liner compiles a single `.cs` file, outputs it into `bin/binaries` and 
 
 <hr>
 
-A summary of all the programs listed along with their outputs can be found at `outputs.md`.
+A summary of all the programs listed along with their outputs can be found at `outputs.md` in the respective directories.
