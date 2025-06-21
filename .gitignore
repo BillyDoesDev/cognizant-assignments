@@ -1,0 +1,7 @@
+questions/
+Program.cs
+*.csproj
+*.sln
+.editorconfig
+bin/
+obj/
