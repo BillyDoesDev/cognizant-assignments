@@ -1,0 +1,35 @@
+services:
+  sql-server:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sql-server
+    hostname: sql1
+    ports:
+      - 1433:1433
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=EightCharsLong_069
+    volumes:
+      - sql-server:/var/opt/mssql
+
+  # dbgate:
+  #   image: dbgate/dbgate
+  #   container_name: dbgate
+  #   restart: always
+  #   depends_on:
+  #     - sql-server
+  #   ports:
+  #     - 8080:3000
+  #   volumes:
+  #     - ./dbgate-data:/root/.dbgate
+  #   environment:
+  #     CONNECTIONS: con1
+
+  #     LABEL_con1: sql-server
+  #     SERVER_con1: sql1 # same as server hostname
+  #     USER_con1: sa
+  #     PASSWORD_con1: EightCharsLong_069
+  #     PORT_con1: 1433
+  #     ENGINE_con1: mssql@dbgate-plugin-mssql
+
+volumes:
+  sql-server:
