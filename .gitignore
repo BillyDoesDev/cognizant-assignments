@@ -1,8 +1,10 @@
 .vscode/
 questions/
 Program.cs
-*.csproj
-*.sln
 .editorconfig
 bin/
 obj/
+
+# specific to week 1
+week1/*.csproj
+week1/*.sln
