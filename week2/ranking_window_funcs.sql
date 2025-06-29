@@ -12,7 +12,7 @@
 -- 3. Use PARTITION BY Category and ORDER BY Price DESC.
 
 -- @block
-USE cognizant_stuff;
+USE Product_Management;
 
 
 -- @block
