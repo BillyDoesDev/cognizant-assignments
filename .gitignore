@@ -1,6 +1,6 @@
 .vscode/
+.config/
 questions/
-Program.cs
 .editorconfig
 bin/
 obj/
@@ -8,3 +8,7 @@ obj/
 # specific to week 1
 week1/*.csproj
 week1/*.sln
+week1/Program.cs
+
+# specific to week 3
+week3/RetailInventory/Migrations/
