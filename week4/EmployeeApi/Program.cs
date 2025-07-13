@@ -1,3 +1,5 @@
+using EmployeeApi.Filters;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -22,6 +24,12 @@ builder.Services.AddSwaggerGen(c => {
             Url = new Uri("https://example.com")
         }
     });
+});
+
+builder.Services.AddScoped<CustomAuthFilter>();
+
+builder.Services.AddControllers(options => {
+    options.Filters.Add<CustomExceptionFilter>();
 });
 
 var app = builder.Build();
