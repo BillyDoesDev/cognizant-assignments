@@ -4,6 +4,8 @@ questions/
 .editorconfig
 bin/
 obj/
+*settings*.json
+*Settings*.json
 
 # specific to week 1
 week1/*.csproj
