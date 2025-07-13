@@ -1,4 +1,3 @@
-using EmployeeApi.Filters;
 using EmployeeApi.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -6,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace EmployeeApi.Controllers {
     [Route("api/[controller]")]
     [ApiController]
-    [ServiceFilter(typeof(CustomAuthFilter))]
+    // [ServiceFilter(typeof(CustomAuthFilter))]
 
     public class EmployeeController : ControllerBase {
         private List<Employee> GetStandardEmployeeList() {
@@ -22,8 +21,7 @@ namespace EmployeeApi.Controllers {
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public ActionResult<List<Employee>> Get() {
-            throw new Exception("Simulated exception");
-            // return GetStandardEmployeeList();
+            return GetStandardEmployeeList();
         }
 
         [HttpPut]
@@ -33,6 +31,7 @@ namespace EmployeeApi.Controllers {
 
             var employees = GetStandardEmployeeList();
             var existing = employees.FirstOrDefault(e => e.Id == emp.Id);
+            // Console.WriteLine(existing);
 
             if (existing == null)
                 return BadRequest("Invalid employee id");

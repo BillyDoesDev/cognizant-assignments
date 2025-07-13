@@ -1,13 +1,8 @@
-using EmployeeApi.Filters;
+using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
-
 builder.Services.AddSwaggerGen(c => {
     c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo {
         Title = "Swagger Demo",
@@ -26,22 +21,25 @@ builder.Services.AddSwaggerGen(c => {
     });
 });
 
-builder.Services.AddScoped<CustomAuthFilter>();
+builder.Services.AddControllers();
+// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+builder.Services.AddOpenApi();
 
-builder.Services.AddControllers(options => {
-    options.Filters.Add<CustomExceptionFilter>();
-});
-
+/************************************ MAKE APP READY ************************************/
 var app = builder.Build();
+/************************************ MAKE APP READY ************************************/
 
+app.MapOpenApi(); // required for both SwaggerUI and Scalar
+
+// Swagger UI endpoint (available at /swagger)
 app.UseSwagger();
 app.UseSwaggerUI(c => {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "Swagger Demo");
 });
 
-// Configure the HTTP request pipeline.
+// Scalar UI endpoint (available at /scalar)
 if (app.Environment.IsDevelopment()) {
-    app.MapOpenApi();
+    app.MapScalarApiReference();
 }
 
 app.UseHttpsRedirection();

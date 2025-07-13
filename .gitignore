@@ -6,6 +6,7 @@ bin/
 obj/
 *settings*.json
 *Settings*.json
+errors.txt
 
 # specific to week 1
 week1/*.csproj
